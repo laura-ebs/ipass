@@ -1,1 +1,1 @@
-#Library for WS2812B leds
+Library for WS2812B leds
