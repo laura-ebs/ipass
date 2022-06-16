@@ -1,8 +1,9 @@
 #include "hwlib.hpp"
-#include "test.hpp"
+#include "colors.hpp"
+#include "write.hpp"
+
 int main() {
     hwlib::wait_ms(1000);
     hwlib::cout << "test\n";
 
-    test();
 }
