@@ -2,6 +2,7 @@
 #define MAX7219_HPP
 
 #include "hwlib.hpp"
+#include "define.hpp"
 
 struct {
     char ascii;
@@ -26,8 +27,10 @@ private:
 public:
     void write(uint16_t data);
     unsigned char find_ascii(char ascii_waarde);
-    void set_intensity();
+    void set_intensity(int brighteness);
     void shutdown(); 
+    void normal_operation();
+    void scan_limit();
 
 };
 
