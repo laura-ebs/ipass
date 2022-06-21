@@ -24,8 +24,8 @@ private:
     hwlib::target::pin_out cs;
     hwlib::target::pin_out clock;
 public:
-    void write(uint8_t adress, uint8_t data);
-    char find_ascii(char ascii_waarde);
+    void write(uint16_t data);
+    unsigned char find_ascii(char ascii_waarde);
     void set_intensity();
     void shutdown(); 
 
