@@ -16,4 +16,9 @@
 #define SHUTDOWN 0xB;
 #define DISPLAY_TEST 0xF;
 
+//define pins
+#define max_data_in d7;
+#define max_cs d6;
+#define max_data d5;
+
 #endif //DEFINE_HPP
