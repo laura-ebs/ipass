@@ -19,17 +19,19 @@ private:
     hwlib::target::pin_out &data_in;
     hwlib::target::pin_out &cs;
     hwlib::target::pin_out &clock;
+    unsigned int limit=0;
+    uint16_t write_data(uint8_t adress, uint8_t chardata);
+    unsigned char find_ascii(char ascii_waarde);
 public:
 
     MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock);
 
-    void write(uint16_t data);//done
-    unsigned char find_ascii(char ascii_waarde);//done
-    void set_intensity(int brighteness);
-    void shutdown(); //done
-    void normal_operation();//done
-    void scan_limit();
-
+    void write(uint16_t data);
+    void set_intensity(unsigned int brighteness);
+    void shutdown(); 
+    void normal_operation();
+    void scan_limit(unsigned int limit);
+    
 };
 
 

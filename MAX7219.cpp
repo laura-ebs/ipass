@@ -11,11 +11,12 @@ font MAX7219_Font[] = {
   {' ',0b0000000},{'0',0b1111110},{'1',0b0110000},{'2',0b1101101},{'3',0b1111001},{'4',0b0110011},
   {'5',0b1011011},{'6',0b1011111},{'7',0b1110000},{'8',0b1111111},{'9',0b1111011},{'\0',0b0000000},
   };
-MAX7219::MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out& cs, hwlib::target::pin_out& clock):
+MAX7219::MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
 data_in(data_in),
 cs(cs),
 clock(clock)
 {}
+
 unsigned char MAX7219::find_ascii(char ascii_waarde){
     for(unsigned int i=0; sizeof(MAX7219_Font)<i; i++){
           if(MAX7219_Font[i].ascii==ascii_waarde){
@@ -23,6 +24,14 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
           }
     }
     return 0b0000000;
+ }
+
+ uint16_t MAX7219::write_data(uint8_t adress, uint8_t chardata){
+     uint16_t write_data = 0;
+     write_data|=adress;
+     write_data<<=8;
+     write_data|=chardata;
+     return write_data;
  }
    
  void MAX7219::write(uint16_t data){
@@ -48,28 +57,33 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
       hwlib::wait_ns(50);
  }
 
- void MAX7219::set_intensity(int brighteness){
-     
+ void MAX7219::set_intensity(unsigned int brighteness){
+     uint8_t adress= INTENSITY;
+     uint8_t bit = 0b00000000;
+     bit|=brighteness;
+     bit+=1;
+     write(write_data(adress,bit));
  }
 
  void MAX7219::shutdown(){
-     uint16_t data = 0;
      uint8_t bit = 0b00000000;
      uint8_t adress= SHUTDOWN;
-     data|=adress;
-     data<<=8;
-     data|=bit;
-     write(data);
+     write(write_data(adress,bit));
+    
  }
 
  void MAX7219::normal_operation(){
-     uint16_t data = 0;
      uint8_t bit = 0b11111111;
      uint8_t adress= SHUTDOWN;
-     data|=adress;
-     data<<=8;
-     data|=bit;
-     write(data);
+     write(write_data(adress,bit));
+ }
+
+ void MAX7219::scan_limit(unsigned int limit){
+     uint8_t adress= SCAN_LIMIT;
+     uint8_t bit = 0b00000000;
+     bit|=limit;
+     write(write_data(adress,bit));
+     
  }
 
  
