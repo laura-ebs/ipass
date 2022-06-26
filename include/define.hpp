@@ -11,9 +11,10 @@
 #define DIGIT_5 0x6
 #define DIGIT_6 0x7
 #define DIGIT_7 0x8
-#define INTENSITY 0x9
-#define SCAN_LIMIT 0xA
-#define SHUTDOWN 0xB
+#define DECODE_MODE 0x9
+#define INTENSITY 0xA
+#define SCAN_LIMIT 0xB
+#define SHUTDOWN 0xC 
 #define DISPLAY_TEST 0xF
 
 //define pins
