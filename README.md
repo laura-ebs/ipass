@@ -1,1 +1,1 @@
-Library for WS2812B leds
+Library for MAX7219 7 segment display
