@@ -1,3 +1,8 @@
+//Copyright (c) 2022 Laura Ebskamp. All rights reserved.
+
+//This work is licensed under the terms of the MIT license.
+//For a copy, see https://opensource.org/licenses/MIT.
+
 #include "MAX7219.hpp"
 #include "hwlib.hpp"
 
@@ -12,6 +17,8 @@ font MAX7219_Font[] = {
   {' ',0b0000000},{'0',0b1111110},{'1',0b0110000},{'2',0b1101101},{'3',0b1111001},{'4',0b0110011},
   {'5',0b1011011},{'6',0b1011111},{'7',0b1110000},{'8',0b1111111},{'9',0b1111011},{'\0',0b0000000},
   };
+
+uint8_t registers [8] ={DIGIT_7,DIGIT_6,DIGIT_5,DIGIT_4,DIGIT_3,DIGIT_2,DIGIT_1,DIGIT_0};
 
 
 MAX7219::MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
@@ -35,8 +42,6 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
      write_data|=adress;
      write_data<<=8;
      write_data|=chardata;
-     int16_t tmp = write_data;
-     hwlib::cout<< "test" << tmp <<hwlib::endl;
      write(write_data);
  }
    
@@ -50,7 +55,6 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
         hwlib::wait_ns(50);
         clock.write(0);
         data<<=1;
-        hwlib::cout<< "0"<< hwlib::endl;
         tmp--;
       }
       for (unsigned int i=0; i<tmp ;i++){
@@ -61,13 +65,11 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
                data_in.write(0);
                clock.write(0);
                hwlib::wait_ns(50);
-               hwlib::cout<< data<< hwlib::endl;
             }else{
                data_in.write(0); 
                clock.write(1);
                hwlib::wait_ns(50);
                clock.write(0);
-               hwlib::cout<< data<< hwlib::endl;
           }
         data<<=1;
       }
@@ -108,5 +110,23 @@ void MAX7219::decode(){
     uint8_t bit = 0b00000000;
     write (adress,bit);
 }
- 
 
+void MAX7219::clear(){
+    for(unsigned int i=0; i<sizeof(registers); i++ ){
+        write(registers[i],0b00000000);
+    }
+}
+
+void MAX7219::write_string(hwlib::string <8> string_data){
+    for(unsigned int i=0; i<sizeof(registers); i++ ){
+        write(registers[i],find_ascii(string_data[i]));
+    }
+}
+ 
+ void MAX7219::initzialize(){
+    scan_limit(7);
+    decode();
+    normal_operation();
+    set_intensity(16); //TODO fix this
+ }
+    
