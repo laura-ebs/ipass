@@ -21,7 +21,7 @@ font MAX7219_Font[] = {
 uint8_t registers [8] ={DIGIT_7,DIGIT_6,DIGIT_5,DIGIT_4,DIGIT_3,DIGIT_2,DIGIT_1,DIGIT_0};
 
 
-MAX7219::MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
+MAX7219::MAX721z(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
 data_in(data_in),
 cs(cs),
 clock(clock)
@@ -49,7 +49,7 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
       cs.write(0);
       hwlib::wait_ns(25);
       unsigned int tmp = 16;
-      while(data<32768) { // leg dit uit morgen
+      while(data<32768) { 
         data_in.write(0); 
         clock.write(1);
         hwlib::wait_ns(50);

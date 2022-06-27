@@ -15,5 +15,5 @@ int main() {
     numbers.initzialize();
     numbers.clear();
     hwlib::wait_ms(3000);
-    numbers.write_string(hwlib::string<5>("HELLO"));
+    numbers.write_string(hwlib::string<8>("HELLO   "));
 }

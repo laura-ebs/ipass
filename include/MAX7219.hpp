@@ -10,91 +10,139 @@
 #include "hwlib.hpp"
 #include "define.hpp"
 
-// using hwlib::target::pin_out;
 
+/**
+ * @brief 
+ * This struct contains a ascii to save for the chars and data for the binary that belongs to the ascii.
+ */
 struct font{
     char ascii;
     char data;
 };
 
+/**
+ * @brief 
+ * This is the class of the MAX7219.
+ */
 class MAX7219{
 private:
+    /**
+     * @brief 
+     *  hwlib pin_out object refrence to the data_in pin.
+     */
     hwlib::target::pin_out &data_in;
+
+    /**
+     * @brief 
+     *  hwlib pin_out object refrence to the cs pin.
+     */
     hwlib::target::pin_out &cs;
+
+    /**
+     * @brief 
+     *  hwlib pin_out object refrence to the clock pin.
+     */
     hwlib::target::pin_out &clock;
+
+    /**
+     * @brief 
+     * The current amount of maximum digits.
+     */
     unsigned int limit=0;
 public:
-
+    /**
+     * @brief Construct a new MAX7219 object
+     * 
+     * @param data_in 
+     * hwlib pin_out object refrence to the data_in pin.
+     * @param cs 
+     *  hwlib pin_out object refrence to the cs pin.
+     * @param clock
+     *  hwlib pin_out object refrence to the clock pin. 
+     */
     MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock);
 
     /**
      * @brief 
-     * 
+     * This function writes 16 bits to the MAX7219.
      * @param data 
+     * the data exists out of 2 bytes the 8 most significant are the adress ,
+     * the 8 least significant are the charactars.
      */
     void write(volatile uint16_t data);
 
     /**
      * @brief 
-     * 
+     * This function will find the binary that belongs to the char you wanna write to the MAX7219.
      * @param ascii_waarde 
+     * the char that you are try to find.
      * @return unsigned char 
+     * The binary data that belongs to the char.
      */
     unsigned char find_ascii(char ascii_waarde);
 
     /**
      * @brief 
-     * 
+     * This function writes two 8 bits to the MAX7219.
      * @param adress 
+     * The adress you want to write the char to.
      * @param chardata 
+     * The char you want write to the adress
      */
     void write(volatile uint8_t adress, volatile uint8_t chardata);
 
     /**
-     * @brief Set the intensity object
-     * 
+     * @brief 
+     * Set the intensity of the MAX2719
      * @param brighteness 
+     * The intensity you want to have the MAX2791 to 16;
      */
     void set_intensity(unsigned int brighteness);
 
     /**
      * @brief 
-     * 
+     * This function will shutdown the MAX7219
      */
     void shutdown(); 
 
     /**
      * @brief 
-     * 
+     * This will start the MAX7219.
      */
     void normal_operation();
 
     /**
      * @brief 
-     * 
+     * This will set the limit of chars you can display with the MAX2719. 
      * @param limit 
+     * The limit you want to write to the MAX7219. Minimum 0 and maximum 7.
      */
     void scan_limit(unsigned int limit);
 
     /**
      * @brief 
-     * 
+     * This function enables no decode.
      */
     void decode();
 
     /**
      * @brief 
-     * 
+     * This will clear the  display of the MAX7219.
      */
-
     void clear();
+    
     /**
      * @brief 
-     * 
+     * This function writes string to the MAX7219 display.
      * @param string_data 
+     * The string contains the chars you want to write 
      */
     void write_string(hwlib::string <8> string_data);
 
+    /**
+     * @brief 
+     *This function initzializes the MAX7219 so you can write to it.
+     */
     void initzialize();
     
 };
