@@ -49,6 +49,7 @@ private:
      * The current amount of maximum digits.
      */
     unsigned int limit=0;
+
 public:
     /**
      * @brief Construct a new MAX7219 object
@@ -83,13 +84,25 @@ public:
 
     /**
      * @brief 
-     * This function writes two 8 bits to the MAX7219.
+     * This function writes 8 bits(adress) and a char to the MAX7219.
      * @param adress 
+     * The adress you want to write the char to.
+     * @param ascii_1
+     * The ascii you want write to the adress
+     * @param dot
+     * If you want to write a dot or not.
+     */
+    void write_char(uint8_t adress, char ascii_1, bool dot =false );
+
+    /**
+     * @brief 
+     * * This function writes two 8 bits to the MAX7219.
+     * @param adress
      * The adress you want to write the char to.
      * @param chardata 
      * The char you want write to the adress
      */
-    void write(volatile uint8_t adress, volatile uint8_t chardata);
+    void write(uint8_t adress, uint8_t chardata);
 
     /**
      * @brief 

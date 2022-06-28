@@ -21,7 +21,7 @@ font MAX7219_Font[] = {
 uint8_t registers [8] ={DIGIT_7,DIGIT_6,DIGIT_5,DIGIT_4,DIGIT_3,DIGIT_2,DIGIT_1,DIGIT_0};
 
 
-MAX7219::MAX721z(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
+MAX7219::MAX7219(hwlib::target::pin_out &data_in, hwlib::target::pin_out &cs, hwlib::target::pin_out &clock):
 data_in(data_in),
 cs(cs),
 clock(clock)
@@ -37,12 +37,20 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
     return 0b0000000;
  }
 
- void MAX7219::write(volatile uint8_t adress, volatile uint8_t chardata){
+void MAX7219::write(uint8_t adress, uint8_t chardata){
      uint16_t write_data = 0;
      write_data|=adress;
      write_data<<=8;
      write_data|=chardata;
      write(write_data);
+ }
+
+ void MAX7219::write_char(uint8_t adress, char ascii_1, bool dot){
+     uint8_t chardata=find_ascii(ascii_1);
+     if (dot==true){
+        chardata|= 0b10000000;
+     }
+     write(adress, chardata);
  }
    
  void MAX7219::write(volatile uint16_t data){
@@ -81,7 +89,7 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
      uint8_t adress= INTENSITY;
      uint8_t bit = 0b00000000;
      bit|=brighteness;
-     bit+=1;
+     bit-=1;
      write(adress,bit);
  }
 
@@ -127,6 +135,6 @@ void MAX7219::write_string(hwlib::string <8> string_data){
     scan_limit(7);
     decode();
     normal_operation();
-    set_intensity(16); //TODO fix this
+    set_intensity(1);
  }
     
