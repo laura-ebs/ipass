@@ -13,13 +13,13 @@ int main() {
     auto max_data = hwlib::target::pin_out(hwlib::target::pins::d5);
     MAX7219 numbers(max_data_in, max_cs, max_data );
     numbers.initzialize();
+    // numbers.clear();
+    // hwlib::wait_ms(500);
+    // numbers.write_char(DIGIT_3, 's');
     numbers.clear();
+    hwlib::wait_ms(1000);
+    numbers.write_string(hwlib::string<8>("HELLO"),5);
     hwlib::wait_ms(500);
-    numbers.write_char(DIGIT_3, 's');
-    //numbers.clear();
-    //hwlib::wait_ms(1000);
-    //numbers.write_string(hwlib::string<8>("HELLO   "));
-    //hwlib::wait_ms(500);
     //numbers.clear();
     //hwlib::wait_ms(500);
     //numbers.write(DIGIT_3, 's');

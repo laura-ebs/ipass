@@ -149,8 +149,10 @@ public:
      * This function writes string to the MAX7219 display.
      * @param string_data 
      * The string contains the chars you want to write 
+     * @param lenght 
+     * Contains the lenght of the string.
      */
-    void write_string(hwlib::string <8> string_data);
+    void write_string(hwlib::string <8> string_data, unsigned int lenght);
 
     /**
      * @brief 

@@ -27,7 +27,6 @@ cs(cs),
 clock(clock)
 {}
 
-
 unsigned char MAX7219::find_ascii(char ascii_waarde){
     for(unsigned int i=0; sizeof(MAX7219_Font)>i; i++){
           if(MAX7219_Font[i].ascii==ascii_waarde){
@@ -125,8 +124,8 @@ void MAX7219::clear(){
     }
 }
 
-void MAX7219::write_string(hwlib::string <8> string_data){
-    for(unsigned int i=0; i<sizeof(registers); i++ ){
+void MAX7219::write_string(hwlib::string <8> string_data, unsigned int lenght){
+    for(unsigned int i=0; i<lenght; i++ ){
         write(registers[i],find_ascii(string_data[i]));
     }
 }
