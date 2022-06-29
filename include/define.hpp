@@ -22,9 +22,24 @@
 #define SHUTDOWN 0xC 
 #define DISPLAY_TEST 0xF
 
-//define pins
+//define pins MAX7219
 #define MAX_DATA_IN hwlib::target::pins::d7
 #define MAX_CS hwlib::target::pins::d6
 #define MAX_DATA hwlib::target::pins::d5
+
+// define pins aplication
+#define LED_0 
+#define LED_1
+#define LED_2
+#define LED_3
+#define LED_4
+#define LED_5
+#define SWITCH_0
+#define SWITCH_1
+#define SWITCH_2
+#define SWITCH_3
+#define SWITCH_4
+#define SWITCH_5
+
 
 #endif //DEFINE_HPP

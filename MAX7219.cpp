@@ -52,7 +52,7 @@ void MAX7219::write(uint8_t adress, uint8_t chardata){
      write(adress, chardata);
  }
    
- void MAX7219::write(volatile uint16_t data){
+ void MAX7219::write(uint16_t data){
       cs.write(0);
       hwlib::wait_ns(25);
       unsigned int tmp = 16;

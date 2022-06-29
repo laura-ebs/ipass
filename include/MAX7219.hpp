@@ -70,7 +70,7 @@ public:
      * the data exists out of 2 bytes the 8 most significant are the adress ,
      * the 8 least significant are the charactars.
      */
-    void write(volatile uint16_t data);
+    void write(uint16_t data);
 
     /**
      * @brief 
