@@ -16,8 +16,8 @@
  * This struct contains a ascii to save for the chars and data for the binary that belongs to the ascii.
  */
 struct font{
-    char ascii;
-    char data;
+    unsigned char ascii;
+    uint8_t data;
 };
 
 /**
@@ -50,6 +50,20 @@ private:
      */
     unsigned int limit=0;
 
+
+    void convert_int_to_char(unsigned int input_int, unsigned char* buffer, unsigned int buffer_length);
+    unsigned int  check_lenght_int(unsigned int input_int);
+
+    /**
+     * @brief 
+     * This function will find the binary that belongs to the char you wanna write to the MAX7219.
+     * @param ascii_waarde 
+     * the char that you are try to find.
+     * @return uint8_t
+     * The binary data that belongs to the char.
+     */
+    uint8_t find_ascii(unsigned char ascii_waarde);
+
 public:
     /**
      * @brief Construct a new MAX7219 object
@@ -72,15 +86,6 @@ public:
      */
     void write(uint16_t data);
 
-    /**
-     * @brief 
-     * This function will find the binary that belongs to the char you wanna write to the MAX7219.
-     * @param ascii_waarde 
-     * the char that you are try to find.
-     * @return unsigned char 
-     * The binary data that belongs to the char.
-     */
-    unsigned char find_ascii(char ascii_waarde);
 
     /**
      * @brief 
@@ -92,7 +97,7 @@ public:
      * @param dot
      * If you want to write a dot or not.
      */
-    void write_char(uint8_t adress, char ascii_1, bool dot =false );
+    void write_char(uint8_t adress, unsigned char ascii_1, bool dot =false );
 
     /**
      * @brief 
@@ -103,6 +108,8 @@ public:
      * The char you want write to the adress
      */
     void write(uint8_t adress, uint8_t chardata);
+
+    void write_int(unsigned int input_int);
 
     /**
      * @brief 

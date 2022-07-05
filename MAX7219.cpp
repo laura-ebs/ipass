@@ -27,7 +27,7 @@ cs(cs),
 clock(clock)
 {}
 
-unsigned char MAX7219::find_ascii(char ascii_waarde){
+uint8_t MAX7219::find_ascii(unsigned char ascii_waarde){
     for(unsigned int i=0; sizeof(MAX7219_Font)>i; i++){
           if(MAX7219_Font[i].ascii==ascii_waarde){
                return MAX7219_Font[i].data;       
@@ -35,6 +35,27 @@ unsigned char MAX7219::find_ascii(char ascii_waarde){
     }
     return 0b0000000;
  }
+
+void MAX7219::convert_int_to_char(unsigned int input_int, unsigned char* buffer, unsigned int buffer_length){
+    for (unsigned int i = 0; i < buffer_length; ++i)
+    {
+        //to convert the last digit of int to char.
+        buffer[(buffer_length - 1) - i] = input_int % 10 + '0';
+        //divide by 10 so you get the next digit.
+        input_int /= 10;
+    }
+}
+
+unsigned int MAX7219::check_lenght_int(unsigned int input_int){
+    unsigned int lenght_of_int=0;
+    while(input_int!=0){
+        input_int = input_int/10;
+        lenght_of_int++;
+    }
+    return lenght_of_int;
+}
+
+
 
 void MAX7219::write(uint8_t adress, uint8_t chardata){
      uint16_t write_data = 0;
@@ -44,9 +65,9 @@ void MAX7219::write(uint8_t adress, uint8_t chardata){
      write(write_data);
  }
 
- void MAX7219::write_char(uint8_t adress, char ascii_1, bool dot){
-     uint8_t chardata=find_ascii(ascii_1);
-     if (dot==true){
+ void MAX7219::write_char(uint8_t adress, unsigned char ascii_1, bool dot){
+     uint8_t chardata = find_ascii(ascii_1);
+     if (dot == true){
         chardata|= 0b10000000;
      }
      write(adress, chardata);
@@ -82,7 +103,27 @@ void MAX7219::write(uint8_t adress, uint8_t chardata){
       }
       cs.write(1);
       hwlib::wait_ns(50);
+
  }
+
+void MAX7219::write_int(unsigned int input_int){
+    unsigned int length =  check_lenght_int(input_int);
+    
+    hwlib::cout << input_int << hwlib::endl;
+    hwlib::cout << length << hwlib::endl;
+
+    // create char buffer
+    unsigned char buffer[8];
+
+    convert_int_to_char(input_int, buffer, length);
+    
+    for(unsigned int i=0; i < length; ++i ){
+        hwlib::cout << buffer[i] << hwlib::endl;
+        write(registers[i], find_ascii(buffer[i]));
+    }
+}
+
+
 
  void MAX7219::set_intensity(unsigned int brighteness){
      uint8_t adress= INTENSITY;
