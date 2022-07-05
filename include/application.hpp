@@ -23,7 +23,8 @@ private:
         HIGHSCORE_PAGE,
         REACTION_TIME_PAGE,
         TIMES_PLAYED_PAGE,
-        GAME
+        GAME,
+        GAME_OVER
     };
 
     //pins
@@ -42,6 +43,7 @@ private:
     unsigned int highscore_num = 0;
     unsigned int menu_text = 0;
     uint_fast64_t menu_update_time = 0;
+    unsigned int react[512];
     void start_reset();
     void score();
     void show_highscore();
@@ -51,7 +53,8 @@ private:
     void show_menu();
     void check_menu_buttons();
     void average_reaction_time();
-
+    void run_game();
+    void show_game_over();
 public: 
 
     game(hwlib::port_out& leds, hwlib::port_in& switches, StatisticsSwitches statistics_switches, MAX7219 &display);

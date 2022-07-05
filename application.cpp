@@ -16,10 +16,6 @@ game::game(hwlib::port_out& leds, hwlib::port_in& switches, StatisticsSwitches s
 {
     display.initialize();
     display.clear();
-
-    for(unsigned int i = 0; i < (sizeof(scores) / sizeof(unsigned int)); ++i){
-        scores[i] = 0;
-    }
 }
 
 void game::run()
@@ -38,13 +34,12 @@ void game::run()
             show_highscore();
             check_menu_buttons();
             hwlib::wait_ms(10);
-            hwlib::cout<<"test1"<<hwlib::endl;
             break;
         
         case REACTION_TIME_PAGE:
+            average_reaction_time();
             check_menu_buttons();
             hwlib::wait_ms(10);
-            hwlib::cout<<"test2"<<hwlib::endl;
             break;
         
         case TIMES_PLAYED_PAGE:
@@ -53,9 +48,12 @@ void game::run()
             hwlib::wait_ms(10);
             hwlib::cout<<"test3"<<hwlib::endl;
             break;
-        
         case GAME:
             hwlib::cout<<"test4"<<hwlib::endl;
+            break;
+        case GAME_OVER:
+            show_game_over();
+            hwlib::wait_ms(10);
             break;
         }
     }
@@ -72,6 +70,14 @@ void game::check_menu_buttons()
     } else if (statistics_switches.SWITCH_REACTION_TIME.read() == 0){
         current_state = REACTION_TIME_PAGE;
     }
+}
+
+void game::show_game_over(){
+    display.write_string("game", 4);
+    hwlib::wait_ms(800);
+    display.write_string("over", 4);
+    hwlib::wait_ms(800);
+    current_state = START_PAGE;
 }
 
 void game::show_menu(){
@@ -117,11 +123,14 @@ void game::score(){
 }
 
 void game::show_highscore(){
-    for(unsigned int i = 0; i < (sizeof(scores) / sizeof(unsigned int)); ++i){
+    for(unsigned int i = 0; i < games_played; ++i){
         if (scores[i] > highscore_num){
             highscore_num = scores[i];
         }  
     }
+    display.clear();
+    display.write_string("hiscore" ,7);
+    hwlib::wait_ms(800);
     display.clear();
     display.write_int(highscore_num);
 }
@@ -141,6 +150,9 @@ bool game::check(){
             return 0;
         }
     }
+    auto end_time= hwlib::now_us();
+    auto reaction_time = end_time - start_time;
+    react[current_score] = reaction_time;
     current_score++;
 
     return 1;
@@ -148,10 +160,41 @@ bool game::check(){
 
 void game::show_times_played(){
     display.clear();
+    display.write_string("ganes", 5);
+    hwlib::wait_ms(800);
+    display.write_string("played", 6);
+    hwlib::wait_ms(800);
+    display.clear();
     display.write_int(games_played);
+    hwlib::wait_ms(800);
+
+}
+
+void game::average_reaction_time(){
+    auto total =  0;
+    for(unsigned int i = 0; i < end_score_game; ++i){
+        total += react[i];
+    }
+    unsigned int average = total / end_score_game;
+    display.clear();
+    display.write_string("reaction", 8);
+    hwlib::wait_ms(800);
+    display.clear();
+    display.write_string("tine", 6);
+    hwlib::wait_ms(800);
+    display.clear();
+    display.write_string("in us", 5);
+    hwlib::wait_ms(800);
+    display.clear();
+    display.write_int(average);
+    hwlib::wait_ms(800);
 }
 
 
+void game::run_game(){
+
+
+}
 
 
 
