@@ -39,10 +39,10 @@ void MAX7219::convert_int_to_char(unsigned int input_int, unsigned char* buffer,
 
 unsigned int MAX7219::check_length_int(unsigned int input_int){
     unsigned int length_of_int = 0;
-    while(input_int != 0){
+    do{
         input_int = input_int / 10;
         length_of_int++;
-    }
+    } while(input_int != 0);
     return length_of_int;
 }
 
@@ -55,7 +55,7 @@ uint8_t MAX7219::get_font_binary(unsigned char input_char){
     return 0b0000000;
 }
 
- void MAX7219::write(uint16_t data){
+void MAX7219::write(uint16_t data){
     cs.write(0);
     hwlib::wait_ns(25);
     unsigned int tmp = 16;
@@ -69,17 +69,17 @@ uint8_t MAX7219::get_font_binary(unsigned char input_char){
     }
     for (unsigned int i = 0; i < tmp; ++i){
         if (data >= 32768){
-               data_in.write(1);
-               clock.write(1);
-               hwlib::wait_ns(50);
-               data_in.write(0);
-               clock.write(0);
-               hwlib::wait_ns(50);
+            data_in.write(1);
+            clock.write(1);
+            hwlib::wait_ns(50);
+            data_in.write(0);
+            clock.write(0);
+            hwlib::wait_ns(50);
         }else{
-               data_in.write(0); 
-               clock.write(1);
-               hwlib::wait_ns(50);
-               clock.write(0);
+            data_in.write(0); 
+            clock.write(1);
+            hwlib::wait_ns(50);
+            clock.write(0);
         }
         data <<= 1;
     }
@@ -88,18 +88,18 @@ uint8_t MAX7219::get_font_binary(unsigned char input_char){
 }
 
 void MAX7219::write(uint8_t adress, uint8_t chardata){
-     uint16_t write_data = 0;
-     write_data |= adress;
-     write_data <<= 8;
-     write_data |= chardata;
-     write(write_data);
+    uint16_t write_data = 0;
+    write_data |= adress;
+    write_data <<= 8;
+    write_data |= chardata;
+    write(write_data);
 }
 
  void MAX7219::write_char(uint8_t adress, unsigned char input_char, bool dot){
-     uint8_t chardata = get_font_binary(input_char);
-     if (dot == true){
+    uint8_t chardata = get_font_binary(input_char);
+    if (dot == true){
         chardata |= 0b10000000;
-     }
+    }
      write(adress, chardata);
 }
    
@@ -115,7 +115,7 @@ void MAX7219::write_int(unsigned int input_int){
 
 void MAX7219::write_string(hwlib::string <8> string_data, unsigned int length){
     for(unsigned int i = 0; i < length; ++i){
-        write_char(registers[i],get_font_binary(string_data[i]));
+        write(registers[i],get_font_binary(string_data[i]));
     }
 }
 
@@ -158,10 +158,9 @@ void MAX7219::decode(){
     write (adress,bit);
 }
 
-void MAX7219::initzialize(){
+void MAX7219::initialize(){
     scan_limit(7);
     decode();
     normal_operation();
     set_intensity(1);
 }
-    
