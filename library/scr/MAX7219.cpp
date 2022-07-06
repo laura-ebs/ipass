@@ -3,7 +3,7 @@
 //This work is licensed under the terms of the MIT license.
 //For a copy, see https://opensource.org/licenses/MIT.
 
-#include "MAX7219.hpp"
+#include "../include/MAX7219.hpp"
 #include "hwlib.hpp"
 
 font MAX7219_Font[] = {

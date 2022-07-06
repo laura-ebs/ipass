@@ -47,3 +47,4 @@ bmptk_fixed_size_stack.c
 *.elf
 *.ld
 *.map
+*.lss

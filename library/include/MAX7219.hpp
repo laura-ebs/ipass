@@ -14,6 +14,10 @@
 /**
  * @brief 
  * This struct contains the font which is made out of unsigned char for the font_char and a uint8_t for the font_binary.
+ * @param font_char
+ * The char you want the font of.
+ * @param font_binary
+ * The font data you want in uint8_t.
  */
 struct font{
     unsigned char font_char;

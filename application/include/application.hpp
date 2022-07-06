@@ -12,9 +12,17 @@
 
 /**
  * @brief 
- * 
+ * A struct that contains the pins for the menu.
+ * @param SWITCH_START_RESET
+ * This is a pin_in refrence object for the start_reset switch.
+ * @param SWITCH_HIGHSCORE
+ * This is a pin_in refrence object for the highscore switch.
+ * @param SWITCH_TIMES_PLAYED
+ * This is a pin_in refrence object for the played_times switch.
+ * @param SWITCH_REACTION_TIME
+ * This is a pin_in refrence object for the reaction_time switch.
  */
-struct StatisticsSwitches{
+struct MenuSwitches{
     hwlib::target::pin_in& SWITCH_START_RESET;
     hwlib::target::pin_in& SWITCH_HIGHSCORE;
     hwlib::target::pin_in& SWITCH_TIMES_PLAYED;
@@ -23,15 +31,27 @@ struct StatisticsSwitches{
 
 /**
  * @brief 
- * This is the class of the game
+ * This is the class of the game.
  */
 class game{
 private:
 
-    /**
-     * @brief 
-     * 
-     */
+  /**
+   * @brief 
+   * This enum contains all the states the game can be in.
+   * @param START_PAGE
+   * Shows the menu.
+   * @param HIGHSCORE_PAGE 
+   * Shows the highscore.
+   * @param REACTION_TIME_PAGE
+   * Shows the reaction time.
+   * @param TIMES_PLAYED_PAGE
+   * Shows times played.
+   * @param GAME
+   * Play the game.
+   * @param GAME_OVER
+   * Shows when game is over
+   */
     enum state{
         START_PAGE,
         HIGHSCORE_PAGE,
@@ -43,39 +63,39 @@ private:
 
     /**
      * @brief 
-     * 
+     * A port_out object with all the leds.
      */
     hwlib::port_out& leds;
 
     /**
      * @brief 
-     * 
+     * A port_in object with all the switches.
      */
     hwlib::port_in& switches;
 
     /**
      * @brief 
-     * 
+     * A struct for the menu switches.
      */
-    StatisticsSwitches statistics_switches;
+    MenuSwitches menu_switches;
 
     /**
      * @brief 
-     * 
+     * A  refrence to MAX7219 object.
      */
     MAX7219 &display;
 
     /**
      * @brief 
-     * 
+     * This contains the state the game is in.
      */
     state current_state;
 
     /**
      * @brief 
-     * 
+     * The max_reaction_time contains the maximum time you to press a switch.
      */
-    unsigned int max_game_time = 2500000;
+    unsigned int max_reaction_time = 2500000;
 
     /**
      * @brief 
@@ -115,49 +135,49 @@ private:
 
     /**
      * @brief 
-     * 
+     * This contains how many things need displayed on the menu.
      */
     unsigned int menu_text = 0;
 
     /**
      * @brief 
-     * 
+     * This contains how many things need displayed for the higscore.
      */
     unsigned int highscore_text = 0;
 
     /**
      * @brief 
-     * 
+     * This contains how many things need displayed for the times played.
      */
     unsigned int times_played_text = 0;
 
     /**
      * @brief 
-     * 
+     * This contains how many things need displayed for the reaction time.
      */
     unsigned int reaction_text = 0;
 
     /**
      * @brief 
-     * 
+     * The menu_update_time contains after how much time the display will update.
      */
     uint_fast64_t menu_update_time = 0;
 
     /**
      * @brief 
-     * 
+     * The highscore_update_time contains after how much time the display will update.
      */
     uint_fast64_t highscore_update_time = 0;
     
     /**
      * @brief 
-     * 
+     * The times_played_update_time contains after how much time the display will update.
      */
     uint_fast64_t times_played_update_time = 0;
 
     /**
      * @brief 
-     * 
+     * The reaction_update_time contains after how much time the display will update.
      */
     uint_fast64_t reaction_update_time = 0;
 
@@ -175,11 +195,9 @@ private:
 
     /**
      * @brief 
-     * 
-     * @return true 
-     * @return false 
+     * This funtion will play the game.
      */
-    bool play();
+    void play();
 
     /**
      * @brief 
@@ -189,13 +207,13 @@ private:
 
     /**
      * @brief 
-     * 
+     * This function shows the menu.
      */
     void show_menu();
 
     /**
      * @brief 
-     * 
+     * This function this functoin checks if one of the menu switches is pressed if so it will put to the correct state.
      */
     void check_menu_buttons();
 
@@ -213,18 +231,22 @@ private:
 
 public: 
     /**
-     * @brief Construct a new game object
-     * 
-     * @param leds 
+     * @brief 
+     * Construct a new game object
+     * @param leds
+     * A port_out reference object that contains the pins to the leds.
      * @param switches 
-     * @param statistics_switches 
+     * A port_in reference object that contains the pins to the game switches.
+     * @param menu_switches 
+     * A port_in reference object that contains the pins to the menu switches.
      * @param display 
+     * A reference to the object of MAX7219 chip.
      */
-    game(hwlib::port_out& leds, hwlib::port_in& switches, StatisticsSwitches statistics_switches, MAX7219 &display);
+    game(hwlib::port_out& leds, hwlib::port_in& switches, MenuSwitches menu_switches, MAX7219 &display);
 
     /**
      * @brief 
-     * 
+     * This function will start the game.
      */
     void run();
 };
