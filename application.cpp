@@ -16,18 +16,17 @@ game::game(hwlib::port_out& leds, hwlib::port_in& switches, StatisticsSwitches s
 {
     display.initialize();
     display.clear();
+    leds.write(0);
 }
 
-void game::run()
-{
-    while(true)
-    {
+void game::run(){
+    while(true){
         switch (current_state)
         {
         case START_PAGE:
             show_menu();
             check_menu_buttons();
-            hwlib::cout<<"test"<<hwlib::endl;
+            hwlib::wait_ms(10);
             break;
 
         case HIGHSCORE_PAGE:
@@ -46,11 +45,13 @@ void game::run()
             show_times_played();
             check_menu_buttons();
             hwlib::wait_ms(10);
-            hwlib::cout<<"test3"<<hwlib::endl;
             break;
+
         case GAME:
-            hwlib::cout<<"test4"<<hwlib::endl;
+            play();
+            hwlib::wait_ms(10);
             break;
+
         case GAME_OVER:
             show_game_over();
             hwlib::wait_ms(10);
@@ -59,8 +60,7 @@ void game::run()
     }
 }
 
-void game::check_menu_buttons()
-{
+void game::check_menu_buttons(){
     if (statistics_switches.SWITCH_START_RESET.read() == 0){ 
         current_state = GAME;
     } else if (statistics_switches.SWITCH_HIGHSCORE.read() == 0){
@@ -77,6 +77,7 @@ void game::show_game_over(){
     hwlib::wait_ms(800);
     display.write_string("over", 4);
     hwlib::wait_ms(800);
+    games_played++;
     current_state = START_PAGE;
 }
 
@@ -113,10 +114,6 @@ void game::show_menu(){
     }
 }
 
-void game::start_reset(){
-    game_it();
-    games_played++;
-}
 
 void game::score(){
     scores[games_played] = end_score_game;
@@ -128,25 +125,41 @@ void game::show_highscore(){
             highscore_num = scores[i];
         }  
     }
-    display.clear();
-    display.write_string("hiscore" ,7);
-    hwlib::wait_ms(800);
-    display.clear();
-    display.write_int(highscore_num);
+
+    if (hwlib::now_us() > highscore_update_time + 800000){
+        highscore_update_time = hwlib::now_us();
+        display.clear();
+        switch (highscore_text)
+        {
+        case 0:
+            display.write_string("hiscore" ,7);
+            break;
+        case 1:
+            display.write_int(highscore_num);
+            break;
+        }
+        highscore_text++;
+        if(highscore_text>=2){
+            highscore_text = 0; 
+        } 
+    }
 }
 
 
-bool game::check(){
+bool game::play(){
     if(current_score % 5 == 0) {
         max_game_time -= 100000;
     }
     auto led=hwlib::random_in(0,4);
     auto start_time= hwlib::now_us();
     leds.write(0x01 << led);
+    hwlib::cout << switches.read() << hwlib::endl;
     while((switches.read() & (0x01 << led)) == 1){
         if((start_time + max_game_time) < hwlib::now_us()) {
             end_score_game = current_score;
+            score();
             current_score=0;
+            current_state = GAME_OVER;
             return 0;
         }
     }
@@ -154,20 +167,30 @@ bool game::check(){
     auto reaction_time = end_time - start_time;
     react[current_score] = reaction_time;
     current_score++;
-
     return 1;
 }
 
 void game::show_times_played(){
-    display.clear();
-    display.write_string("ganes", 5);
-    hwlib::wait_ms(800);
-    display.write_string("played", 6);
-    hwlib::wait_ms(800);
-    display.clear();
-    display.write_int(games_played);
-    hwlib::wait_ms(800);
-
+if (hwlib::now_us() > times_played_update_time + 800000){
+        times_played_update_time = hwlib::now_us();
+        display.clear();
+        switch (times_played_text)
+        {
+        case 0:
+            display.write_string("ganes", 5);
+            break;
+        case 1:
+            display.write_string("played", 6);
+            break;
+        case 2:
+            display.write_int(games_played);
+            break;
+        }
+        times_played_text++;
+        if(times_played_text>=3){
+            times_played_text = 0; 
+        }
+    }
 }
 
 void game::average_reaction_time(){
@@ -176,24 +199,30 @@ void game::average_reaction_time(){
         total += react[i];
     }
     unsigned int average = total / end_score_game;
-    display.clear();
-    display.write_string("reaction", 8);
-    hwlib::wait_ms(800);
-    display.clear();
-    display.write_string("tine", 6);
-    hwlib::wait_ms(800);
-    display.clear();
-    display.write_string("in us", 5);
-    hwlib::wait_ms(800);
-    display.clear();
-    display.write_int(average);
-    hwlib::wait_ms(800);
-}
 
-
-void game::run_game(){
-
-
+    if (hwlib::now_us() > reaction_update_time + 800000){
+        reaction_update_time = hwlib::now_us();
+        display.clear();
+        switch (reaction_text)
+        {
+        case 0:
+            display.write_string("reaction", 8);
+            break;
+        case 1:
+            display.write_string("tine", 4);
+            break;
+        case 2:
+            display.write_string("in us", 5);
+            break;
+        case 3:
+            display.write_int(average);;
+            break;
+        }
+        reaction_text++;
+        if(reaction_text >= 4){
+            reaction_text = 0; 
+        }
+    }
 }
 
 
@@ -227,7 +256,6 @@ int main(){
     //arrays for switches game and leds.
     auto leds = hwlib::port_out_from(LED_0,LED_1,LED_2,LED_3,LED_4);
     auto switches = hwlib::port_in_from(SWITCH_0, SWITCH_1, SWITCH_2, SWITCH_3, SWITCH_4);
-
 
     //constuctor game
     game game1(leds,switches,statistics_switches, display);
