@@ -3,8 +3,8 @@
 //This work is licensed under the terms of the MIT license.
 //For a copy, see https://opensource.org/licenses/MIT.
 
-#include "../include/application.hpp"
-#include "../../library/include/MAX7219.hpp"
+#include "application.hpp"
+#include "MAX7219.hpp"
 #include "hwlib.hpp"
 
 game::game(hwlib::port_out& leds, hwlib::port_in& switches, MenuSwitches menu_switches, MAX7219 &display):
@@ -155,7 +155,7 @@ void game::play(){
     auto start_time= hwlib::now_us();
     leds.write(0x01 << led);
     while(((switches.read() & (0x01 << led)) >> led) == 1){
-        if((start_time + max_game_time) < hwlib::now_us()) {
+        if((start_time + max_reaction_time) < hwlib::now_us()) {
             end_score_game = current_score;
             score();
             current_score=0;
