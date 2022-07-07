@@ -155,7 +155,7 @@ void game::play(){
     auto start_time= hwlib::now_us();
     leds.write(0x01 << led);
     while(((switches.read() & (0x01 << led)) >> led) == 1){
-        if((start_time + max_game_time) < hwlib::now_us()) {
+        if((start_time + max_reaction_time) < hwlib::now_us()) {
             end_score_game = current_score;
             score();
             current_score=0;
