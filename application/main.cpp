@@ -3,8 +3,8 @@
 //This work is licensed under the terms of the MIT license.
 //For a copy, see https://opensource.org/licenses/MIT.
 
-#include "../include/application.hpp"
-#include "../../library/include/MAX7219.hpp"
+#include "include/application.hpp"
+#include "../library/include/MAX7219.hpp"
 #include "hwlib.hpp"
 
 int main(){

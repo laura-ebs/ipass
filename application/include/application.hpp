@@ -7,7 +7,7 @@
 #define APPLICATION_HPP
 
 #include "hwlib.hpp"
-#include "MAX7219.hpp"
+#include "../../library/include/MAX7219.hpp"
 
 
 /**
