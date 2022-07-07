@@ -1,0 +1,270 @@
+\hypertarget{class_m_a_x7219}{}\doxysection{MAX7219 Class Reference}
+\label{class_m_a_x7219}\index{MAX7219@{MAX7219}}
+
+
+This is the class of the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}.  
+
+
+
+
+{\ttfamily \#include $<$MAX7219.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_a_x7219_af508b49817f024720ee76e5d65e5f230}{MAX7219}} (hwlib\+::target\+::pin\+\_\+out \&\mbox{\hyperlink{class_m_a_x7219_a95b64013b71a054800c3b2fba2e4c0d3}{data\+\_\+in}}, hwlib\+::target\+::pin\+\_\+out \&\mbox{\hyperlink{class_m_a_x7219_a668dc26558fd886a1eeaab6d35143a77}{cs}}, hwlib\+::target\+::pin\+\_\+out \&\mbox{\hyperlink{class_m_a_x7219_a6a7ad69b49428db2311d752d670df7fd}{clock}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_a103614fb44fddac6fb906e7756fcd67b}{write}} (uint16\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em This function writes 16 bits to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_a280570efeb53bdb6ec9ad4bfbaf77500}{write}} (uint8\+\_\+t adress, uint8\+\_\+t chardata)
+\item 
+void \mbox{\hyperlink{class_m_a_x7219_a4b3bb31e238b79e10ad186c11ff7d506}{write\+\_\+char}} (uint8\+\_\+t adress, unsigned char input\+\_\+char, bool dot=false)
+\begin{DoxyCompactList}\small\item\em This function writes 8 bits(adress) and a char to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_add5954f8b6e936adfa6de7aa90311f74}{write\+\_\+int}} (unsigned int input\+\_\+int)
+\begin{DoxyCompactList}\small\item\em This functinon writes a int to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_a1bd68f95f1285220fb6f60235ccfdfdb}{write\+\_\+string}} (hwlib\+::string$<$ 8 $>$ string\+\_\+data, unsigned int length)
+\begin{DoxyCompactList}\small\item\em This function writes a string to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a357874bc9d2636c2910f9cdf7bdbf21d}\label{class_m_a_x7219_a357874bc9d2636c2910f9cdf7bdbf21d}} 
+void \mbox{\hyperlink{class_m_a_x7219_a357874bc9d2636c2910f9cdf7bdbf21d}{clear}} ()
+\begin{DoxyCompactList}\small\item\em This will clear the display of the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_a923c216d091babdec09ea0536b02c086}{set\+\_\+intensity}} (unsigned int brightness)
+\begin{DoxyCompactList}\small\item\em This function will set the intensity of the MAX2719. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_ae0a8a1469459084ba321ea56ce27d09a}\label{class_m_a_x7219_ae0a8a1469459084ba321ea56ce27d09a}} 
+void \mbox{\hyperlink{class_m_a_x7219_ae0a8a1469459084ba321ea56ce27d09a}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em This function will shutdown the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a6fe7f32f23ff77e0a409462d9750f708}\label{class_m_a_x7219_a6fe7f32f23ff77e0a409462d9750f708}} 
+void \mbox{\hyperlink{class_m_a_x7219_a6fe7f32f23ff77e0a409462d9750f708}{normal\+\_\+operation}} ()
+\begin{DoxyCompactList}\small\item\em This function will start the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_a_x7219_a833bab6514d5510685c2bb7a38a866db}{scan\+\_\+limit}} (unsigned int \mbox{\hyperlink{class_m_a_x7219_a4ef881d08332b0552331eaa1f7821517}{limit}})
+\begin{DoxyCompactList}\small\item\em This function will set the limit of chars you can display with the MAX2719. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a0a3965af79c79e3c25f318a36880a42e}\label{class_m_a_x7219_a0a3965af79c79e3c25f318a36880a42e}} 
+void \mbox{\hyperlink{class_m_a_x7219_a0a3965af79c79e3c25f318a36880a42e}{decode}} ()
+\begin{DoxyCompactList}\small\item\em This function enables no decode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a63ae4075a29a72a2b2433af9dc4b0af0}\label{class_m_a_x7219_a63ae4075a29a72a2b2433af9dc4b0af0}} 
+void \mbox{\hyperlink{class_m_a_x7219_a63ae4075a29a72a2b2433af9dc4b0af0}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em This function initializes the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} so you can write to it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_m_a_x7219_a93237a4d0003a2617bf3986b3df63ef5}{convert\+\_\+int\+\_\+to\+\_\+char}} (unsigned int input\+\_\+int, unsigned char $\ast$buffer, unsigned int buffer\+\_\+length)
+\begin{DoxyCompactList}\small\item\em This function will convert an integer to a unsigned char. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_m_a_x7219_ac18296f43a15f34d85aca6ebb042dc1e}{check\+\_\+length\+\_\+int}} (unsigned int input\+\_\+int)
+\begin{DoxyCompactList}\small\item\em This function will determine how many digits an int contains. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_m_a_x7219_a0e40221ed112443f5d01cf41c1aa552f}{get\+\_\+font\+\_\+binary}} (unsigned char input\+\_\+char)
+\begin{DoxyCompactList}\small\item\em This function will find the binary that belongs to the unsigned char you want to write to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_m_a_x7219_a95b64013b71a054800c3b2fba2e4c0d3}\label{class_m_a_x7219_a95b64013b71a054800c3b2fba2e4c0d3}} 
+hwlib\+::target\+::pin\+\_\+out \& \mbox{\hyperlink{class_m_a_x7219_a95b64013b71a054800c3b2fba2e4c0d3}{data\+\_\+in}}
+\begin{DoxyCompactList}\small\item\em hwlib pin\+\_\+out object refrence to the data\+\_\+in pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a668dc26558fd886a1eeaab6d35143a77}\label{class_m_a_x7219_a668dc26558fd886a1eeaab6d35143a77}} 
+hwlib\+::target\+::pin\+\_\+out \& \mbox{\hyperlink{class_m_a_x7219_a668dc26558fd886a1eeaab6d35143a77}{cs}}
+\begin{DoxyCompactList}\small\item\em hwlib pin\+\_\+out object refrence to the cs pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a6a7ad69b49428db2311d752d670df7fd}\label{class_m_a_x7219_a6a7ad69b49428db2311d752d670df7fd}} 
+hwlib\+::target\+::pin\+\_\+out \& \mbox{\hyperlink{class_m_a_x7219_a6a7ad69b49428db2311d752d670df7fd}{clock}}
+\begin{DoxyCompactList}\small\item\em hwlib pin\+\_\+out object refrence to the clock pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_m_a_x7219_a4ef881d08332b0552331eaa1f7821517}\label{class_m_a_x7219_a4ef881d08332b0552331eaa1f7821517}} 
+unsigned int \mbox{\hyperlink{class_m_a_x7219_a4ef881d08332b0552331eaa1f7821517}{limit}} = 0
+\begin{DoxyCompactList}\small\item\em The limit contains current amount of maximum digits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class of the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_m_a_x7219_af508b49817f024720ee76e5d65e5f230}\label{class_m_a_x7219_af508b49817f024720ee76e5d65e5f230}} 
+\index{MAX7219@{MAX7219}!MAX7219@{MAX7219}}
+\index{MAX7219@{MAX7219}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{MAX7219()}{MAX7219()}}
+{\footnotesize\ttfamily MAX7219\+::\+MAX7219 (\begin{DoxyParamCaption}\item[{hwlib\+::target\+::pin\+\_\+out \&}]{data\+\_\+in,  }\item[{hwlib\+::target\+::pin\+\_\+out \&}]{cs,  }\item[{hwlib\+::target\+::pin\+\_\+out \&}]{clock }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+\_\+in} & hwlib pin\+\_\+out object refrence to the data\+\_\+in pin. \\
+\hline
+{\em cs} & hwlib pin\+\_\+out object refrence to the cs pin. \\
+\hline
+{\em clock} & hwlib pin\+\_\+out object refrence to the clock pin. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_m_a_x7219_ac18296f43a15f34d85aca6ebb042dc1e}\label{class_m_a_x7219_ac18296f43a15f34d85aca6ebb042dc1e}} 
+\index{MAX7219@{MAX7219}!check\_length\_int@{check\_length\_int}}
+\index{check\_length\_int@{check\_length\_int}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{check\_length\_int()}{check\_length\_int()}}
+{\footnotesize\ttfamily unsigned int MAX7219\+::check\+\_\+length\+\_\+int (\begin{DoxyParamCaption}\item[{unsigned int}]{input\+\_\+int }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function will determine how many digits an int contains. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+int} & The input\+\_\+int contains the integer you want to know the count of digits of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned int Retruns the length of the integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_a_x7219_a93237a4d0003a2617bf3986b3df63ef5}\label{class_m_a_x7219_a93237a4d0003a2617bf3986b3df63ef5}} 
+\index{MAX7219@{MAX7219}!convert\_int\_to\_char@{convert\_int\_to\_char}}
+\index{convert\_int\_to\_char@{convert\_int\_to\_char}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{convert\_int\_to\_char()}{convert\_int\_to\_char()}}
+{\footnotesize\ttfamily void MAX7219\+::convert\+\_\+int\+\_\+to\+\_\+char (\begin{DoxyParamCaption}\item[{unsigned int}]{input\+\_\+int,  }\item[{unsigned char $\ast$}]{buffer,  }\item[{unsigned int}]{buffer\+\_\+length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function will convert an integer to a unsigned char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+int} & The input\+\_\+int contains the integer you want to convert. \\
+\hline
+{\em buffer} & The buffer contains the converted unsigned chars. \\
+\hline
+{\em buffer\+\_\+length} & The buffer\+\_\+length contains the length of the buffer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_a0e40221ed112443f5d01cf41c1aa552f}\label{class_m_a_x7219_a0e40221ed112443f5d01cf41c1aa552f}} 
+\index{MAX7219@{MAX7219}!get\_font\_binary@{get\_font\_binary}}
+\index{get\_font\_binary@{get\_font\_binary}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{get\_font\_binary()}{get\_font\_binary()}}
+{\footnotesize\ttfamily uint8\+\_\+t MAX7219\+::get\+\_\+font\+\_\+binary (\begin{DoxyParamCaption}\item[{unsigned char}]{input\+\_\+char }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This function will find the binary that belongs to the unsigned char you want to write to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+char} & The input\+\_\+char contains the unsingned char that you are trying to find the binary of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Returns the font\+\_\+binary that belongs to the input\+\_\+char. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_a_x7219_a833bab6514d5510685c2bb7a38a866db}\label{class_m_a_x7219_a833bab6514d5510685c2bb7a38a866db}} 
+\index{MAX7219@{MAX7219}!scan\_limit@{scan\_limit}}
+\index{scan\_limit@{scan\_limit}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{scan\_limit()}{scan\_limit()}}
+{\footnotesize\ttfamily void MAX7219\+::scan\+\_\+limit (\begin{DoxyParamCaption}\item[{unsigned int}]{limit }\end{DoxyParamCaption})}
+
+
+
+This function will set the limit of chars you can display with the MAX2719. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & The limit you want to write to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. Minimum 0 and maximum 7. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_a923c216d091babdec09ea0536b02c086}\label{class_m_a_x7219_a923c216d091babdec09ea0536b02c086}} 
+\index{MAX7219@{MAX7219}!set\_intensity@{set\_intensity}}
+\index{set\_intensity@{set\_intensity}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{set\_intensity()}{set\_intensity()}}
+{\footnotesize\ttfamily void MAX7219\+::set\+\_\+intensity (\begin{DoxyParamCaption}\item[{unsigned int}]{brightness }\end{DoxyParamCaption})}
+
+
+
+This function will set the intensity of the MAX2719. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em brightness} & The brightness contains the intensity you want to have on the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. Minimum 0 and maximum 16. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_a103614fb44fddac6fb906e7756fcd67b}\label{class_m_a_x7219_a103614fb44fddac6fb906e7756fcd67b}} 
+\index{MAX7219@{MAX7219}!write@{write}}
+\index{write@{write}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void MAX7219\+::write (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+This function writes 16 bits to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data exists out of 2 bytes the 8 most significant bits are the adress, the 8 least significant bits are the charactars. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_a280570efeb53bdb6ec9ad4bfbaf77500}\label{class_m_a_x7219_a280570efeb53bdb6ec9ad4bfbaf77500}} 
+\index{MAX7219@{MAX7219}!write@{write}}
+\index{write@{write}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void MAX7219\+::write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{adress,  }\item[{uint8\+\_\+t}]{chardata }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item This function writes two 8 bits to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. 
+\begin{DoxyParams}{Parameters}
+{\em adress} & The adress contains the adress you want to write the char to. \\
+\hline
+{\em chardata} & The chardata contains the font\+\_\+binary of the char you want write to the adress \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\mbox{\Hypertarget{class_m_a_x7219_a4b3bb31e238b79e10ad186c11ff7d506}\label{class_m_a_x7219_a4b3bb31e238b79e10ad186c11ff7d506}} 
+\index{MAX7219@{MAX7219}!write\_char@{write\_char}}
+\index{write\_char@{write\_char}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{write\_char()}{write\_char()}}
+{\footnotesize\ttfamily void MAX7219\+::write\+\_\+char (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{adress,  }\item[{unsigned char}]{input\+\_\+char,  }\item[{bool}]{dot = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+This function writes 8 bits(adress) and a char to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adress} & The adress contains the adress you want to write the input\+\_\+char to. \\
+\hline
+{\em input\+\_\+char} & The input\+\_\+char contains the char you want write to the adress \\
+\hline
+{\em dot} & The dot contains whether you want to write a dot or not. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_add5954f8b6e936adfa6de7aa90311f74}\label{class_m_a_x7219_add5954f8b6e936adfa6de7aa90311f74}} 
+\index{MAX7219@{MAX7219}!write\_int@{write\_int}}
+\index{write\_int@{write\_int}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{write\_int()}{write\_int()}}
+{\footnotesize\ttfamily void MAX7219\+::write\+\_\+int (\begin{DoxyParamCaption}\item[{unsigned int}]{input\+\_\+int }\end{DoxyParamCaption})}
+
+
+
+This functinon writes a int to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+int} & The input\+\_\+int contains the int you want to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_m_a_x7219_a1bd68f95f1285220fb6f60235ccfdfdb}\label{class_m_a_x7219_a1bd68f95f1285220fb6f60235ccfdfdb}} 
+\index{MAX7219@{MAX7219}!write\_string@{write\_string}}
+\index{write\_string@{write\_string}!MAX7219@{MAX7219}}
+\doxysubsubsection{\texorpdfstring{write\_string()}{write\_string()}}
+{\footnotesize\ttfamily void MAX7219\+::write\+\_\+string (\begin{DoxyParamCaption}\item[{hwlib\+::string$<$ 8 $>$}]{string\+\_\+data,  }\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+
+
+This function writes a string to the \mbox{\hyperlink{class_m_a_x7219}{MAX7219}} display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\+\_\+data} & The string\+\_\+data contains the string you want to write \\
+\hline
+{\em length} & The length contains the length of the string. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TI\+\_\+\+SOFTWARE/ipass/library/MAX7219.\+hpp\item 
+C\+:/\+TI\+\_\+\+SOFTWARE/ipass/library/MAX7219.\+cpp\end{DoxyCompactItemize}

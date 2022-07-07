@@ -1,0 +1,183 @@
+\hypertarget{classgame}{}\doxysection{game Class Reference}
+\label{classgame}\index{game@{game}}
+
+
+This is the class of the game.  
+
+
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgame_a8cb18375f09cd968b88d4ca7a92c59ef}{game}} (hwlib\+::port\+\_\+out \&\mbox{\hyperlink{classgame_a4d8bc9e34a769ca259fe030dde5b494b}{leds}}, hwlib\+::port\+\_\+in \&\mbox{\hyperlink{classgame_aaa2839c03d85e269af2288990a570586}{switches}}, \mbox{\hyperlink{struct_menu_switches}{Menu\+Switches}} \mbox{\hyperlink{classgame_a44cbb10bd844fe3c8284d291abe0a183}{menu\+\_\+switches}}, MAX7219 \&\mbox{\hyperlink{classgame_a35fe9f7bbc6554bb37334928653540d8}{display}})
+\begin{DoxyCompactList}\small\item\em Construct a new game object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ac0989b3bcd3a7a806cd7c3211bc339e8}\label{classgame_ac0989b3bcd3a7a806cd7c3211bc339e8}} 
+void \mbox{\hyperlink{classgame_ac0989b3bcd3a7a806cd7c3211bc339e8}{run}} ()
+\begin{DoxyCompactList}\small\item\em This function will start the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classgame_a8e9113d8c9bfe26e517f74c1f6f08411}{state}} \{ \newline
+{\bfseries START\+\_\+\+PAGE}
+, {\bfseries HIGHSCORE\+\_\+\+PAGE}
+, {\bfseries REACTION\+\_\+\+TIME\+\_\+\+PAGE}
+, {\bfseries TIMES\+\_\+\+PLAYED\+\_\+\+PAGE}
+, \newline
+{\bfseries GAME}
+, {\bfseries GAME\+\_\+\+OVER}
+ \}
+\begin{DoxyCompactList}\small\item\em This enum contains all the states the game can be in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_a5aa479761f3157016f8ac7e2c7076f7d}\label{classgame_a5aa479761f3157016f8ac7e2c7076f7d}} 
+void \mbox{\hyperlink{classgame_a5aa479761f3157016f8ac7e2c7076f7d}{score}} ()
+\begin{DoxyCompactList}\small\item\em This function adds the score to an array at the end of a game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a4a5096e5303a660c91814f9a1f3b0879}\label{classgame_a4a5096e5303a660c91814f9a1f3b0879}} 
+void \mbox{\hyperlink{classgame_a4a5096e5303a660c91814f9a1f3b0879}{show\+\_\+highscore}} ()
+\begin{DoxyCompactList}\small\item\em This function will show the highest score on the display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ae137c41e122aa7f165a33c4cb291811b}\label{classgame_ae137c41e122aa7f165a33c4cb291811b}} 
+void \mbox{\hyperlink{classgame_ae137c41e122aa7f165a33c4cb291811b}{play}} ()
+\begin{DoxyCompactList}\small\item\em This funtion will play the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a326f8dabfc1c4cf4b5456203b0caae8a}\label{classgame_a326f8dabfc1c4cf4b5456203b0caae8a}} 
+void \mbox{\hyperlink{classgame_a326f8dabfc1c4cf4b5456203b0caae8a}{show\+\_\+times\+\_\+played}} ()
+\begin{DoxyCompactList}\small\item\em This function shows how many times you have played on the display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a685845f125f2fcb7f8890b145322cb04}\label{classgame_a685845f125f2fcb7f8890b145322cb04}} 
+void \mbox{\hyperlink{classgame_a685845f125f2fcb7f8890b145322cb04}{show\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em This function shows the menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aac85a14aab23c76804aeda9111f937c7}\label{classgame_aac85a14aab23c76804aeda9111f937c7}} 
+void \mbox{\hyperlink{classgame_aac85a14aab23c76804aeda9111f937c7}{check\+\_\+menu\+\_\+buttons}} ()
+\begin{DoxyCompactList}\small\item\em This function this functoin checks if one of the menu switches is pressed if so it will put to the correct state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a95540c9be4e066b5c49d33e1c290d12e}\label{classgame_a95540c9be4e066b5c49d33e1c290d12e}} 
+void \mbox{\hyperlink{classgame_a95540c9be4e066b5c49d33e1c290d12e}{average\+\_\+reaction\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em This function will calculate the average reaction time and show it on the display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aae673c62bf52f094cab4dc9181a650c6}\label{classgame_aae673c62bf52f094cab4dc9181a650c6}} 
+void \mbox{\hyperlink{classgame_aae673c62bf52f094cab4dc9181a650c6}{show\+\_\+game\+\_\+over}} ()
+\begin{DoxyCompactList}\small\item\em This function will show you that the game is over. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_a4d8bc9e34a769ca259fe030dde5b494b}\label{classgame_a4d8bc9e34a769ca259fe030dde5b494b}} 
+hwlib\+::port\+\_\+out \& \mbox{\hyperlink{classgame_a4d8bc9e34a769ca259fe030dde5b494b}{leds}}
+\begin{DoxyCompactList}\small\item\em A port\+\_\+out object with all the leds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aaa2839c03d85e269af2288990a570586}\label{classgame_aaa2839c03d85e269af2288990a570586}} 
+hwlib\+::port\+\_\+in \& \mbox{\hyperlink{classgame_aaa2839c03d85e269af2288990a570586}{switches}}
+\begin{DoxyCompactList}\small\item\em A port\+\_\+in object with all the switches. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a44cbb10bd844fe3c8284d291abe0a183}\label{classgame_a44cbb10bd844fe3c8284d291abe0a183}} 
+\mbox{\hyperlink{struct_menu_switches}{Menu\+Switches}} \mbox{\hyperlink{classgame_a44cbb10bd844fe3c8284d291abe0a183}{menu\+\_\+switches}}
+\begin{DoxyCompactList}\small\item\em A struct for the menu switches. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a35fe9f7bbc6554bb37334928653540d8}\label{classgame_a35fe9f7bbc6554bb37334928653540d8}} 
+MAX7219 \& \mbox{\hyperlink{classgame_a35fe9f7bbc6554bb37334928653540d8}{display}}
+\begin{DoxyCompactList}\small\item\em A refrence to MAX7219 object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aa8385faf7ff92b1487dbb9c1aeeca742}\label{classgame_aa8385faf7ff92b1487dbb9c1aeeca742}} 
+\mbox{\hyperlink{classgame_a8e9113d8c9bfe26e517f74c1f6f08411}{state}} \mbox{\hyperlink{classgame_aa8385faf7ff92b1487dbb9c1aeeca742}{current\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em This contains the state the game is in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a53388ddc5cb3635d6446676ad4d9d327}\label{classgame_a53388ddc5cb3635d6446676ad4d9d327}} 
+unsigned int \mbox{\hyperlink{classgame_a53388ddc5cb3635d6446676ad4d9d327}{max\+\_\+reaction\+\_\+time}} = 2500000
+\begin{DoxyCompactList}\small\item\em The max\+\_\+reaction\+\_\+time contains the maximum time you to press a switch. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a7a3a1b1539e134904e7e2727ae2bb02e}\label{classgame_a7a3a1b1539e134904e7e2727ae2bb02e}} 
+unsigned int \mbox{\hyperlink{classgame_a7a3a1b1539e134904e7e2727ae2bb02e}{games\+\_\+played}} = 0
+\begin{DoxyCompactList}\small\item\em The games\+\_\+played contains how many times you played the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a3e53db661c256e11cb0315e81fca9d9e}\label{classgame_a3e53db661c256e11cb0315e81fca9d9e}} 
+unsigned int \mbox{\hyperlink{classgame_a3e53db661c256e11cb0315e81fca9d9e}{current\+\_\+score}} = 0
+\begin{DoxyCompactList}\small\item\em The current\+\_\+score contains the score of the game your playing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ae10b7bbb5db710564274bd0ef474d54f}\label{classgame_ae10b7bbb5db710564274bd0ef474d54f}} 
+unsigned int \mbox{\hyperlink{classgame_ae10b7bbb5db710564274bd0ef474d54f}{end\+\_\+score\+\_\+game}} = 0
+\begin{DoxyCompactList}\small\item\em The end\+\_\+score\+\_\+game contains the score you had when you finished a game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a52f1539f73f29f10f06727ccef6aef58}\label{classgame_a52f1539f73f29f10f06727ccef6aef58}} 
+unsigned int \mbox{\hyperlink{classgame_a52f1539f73f29f10f06727ccef6aef58}{scores}} \mbox{[}512\mbox{]}
+\begin{DoxyCompactList}\small\item\em The scores is an array that contains the end score of every game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aa8044ddbfd7e8156cf74ae076b5cb2d7}\label{classgame_aa8044ddbfd7e8156cf74ae076b5cb2d7}} 
+unsigned int \mbox{\hyperlink{classgame_aa8044ddbfd7e8156cf74ae076b5cb2d7}{highscore\+\_\+num}} = 0
+\begin{DoxyCompactList}\small\item\em The highscore\+\_\+num contains the highest score you managed to obtain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a7499496ad7191fd8d4d21f97bcff7862}\label{classgame_a7499496ad7191fd8d4d21f97bcff7862}} 
+unsigned int \mbox{\hyperlink{classgame_a7499496ad7191fd8d4d21f97bcff7862}{react}} \mbox{[}512\mbox{]}
+\begin{DoxyCompactList}\small\item\em The score is an array that contains the score of each game you played. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a53a3b25186673b58d3b77207475dbaa4}\label{classgame_a53a3b25186673b58d3b77207475dbaa4}} 
+unsigned int \mbox{\hyperlink{classgame_a53a3b25186673b58d3b77207475dbaa4}{menu\+\_\+text}} = 0
+\begin{DoxyCompactList}\small\item\em This contains how many things need displayed on the menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a777b8014a05d0d18d7bfeb09a481a21c}\label{classgame_a777b8014a05d0d18d7bfeb09a481a21c}} 
+unsigned int \mbox{\hyperlink{classgame_a777b8014a05d0d18d7bfeb09a481a21c}{highscore\+\_\+text}} = 0
+\begin{DoxyCompactList}\small\item\em This contains how many things need displayed for the higscore. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a03e9b77ff8cb4a29229166f3f3abbe3f}\label{classgame_a03e9b77ff8cb4a29229166f3f3abbe3f}} 
+unsigned int \mbox{\hyperlink{classgame_a03e9b77ff8cb4a29229166f3f3abbe3f}{times\+\_\+played\+\_\+text}} = 0
+\begin{DoxyCompactList}\small\item\em This contains how many things need displayed for the times played. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ac9a8d7e1394b7771c06fa581b83b9bf9}\label{classgame_ac9a8d7e1394b7771c06fa581b83b9bf9}} 
+unsigned int \mbox{\hyperlink{classgame_ac9a8d7e1394b7771c06fa581b83b9bf9}{reaction\+\_\+text}} = 0
+\begin{DoxyCompactList}\small\item\em This contains how many things need displayed for the reaction time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a4ba4e010e16bc9ad9f9dd03f853512d7}\label{classgame_a4ba4e010e16bc9ad9f9dd03f853512d7}} 
+uint\+\_\+fast64\+\_\+t \mbox{\hyperlink{classgame_a4ba4e010e16bc9ad9f9dd03f853512d7}{menu\+\_\+update\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em The menu\+\_\+update\+\_\+time contains after how much time the display will update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a78859833cd40d0088bb22e2b6e5bcc3c}\label{classgame_a78859833cd40d0088bb22e2b6e5bcc3c}} 
+uint\+\_\+fast64\+\_\+t \mbox{\hyperlink{classgame_a78859833cd40d0088bb22e2b6e5bcc3c}{highscore\+\_\+update\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em The highscore\+\_\+update\+\_\+time contains after how much time the display will update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a1d797bcdb1edd3a24eb76e13791745cc}\label{classgame_a1d797bcdb1edd3a24eb76e13791745cc}} 
+uint\+\_\+fast64\+\_\+t \mbox{\hyperlink{classgame_a1d797bcdb1edd3a24eb76e13791745cc}{times\+\_\+played\+\_\+update\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em The times\+\_\+played\+\_\+update\+\_\+time contains after how much time the display will update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a42145dff8270912109b163fad30d6294}\label{classgame_a42145dff8270912109b163fad30d6294}} 
+uint\+\_\+fast64\+\_\+t \mbox{\hyperlink{classgame_a42145dff8270912109b163fad30d6294}{reaction\+\_\+update\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em The reaction\+\_\+update\+\_\+time contains after how much time the display will update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class of the game. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classgame_a8e9113d8c9bfe26e517f74c1f6f08411}\label{classgame_a8e9113d8c9bfe26e517f74c1f6f08411}} 
+\index{game@{game}!state@{state}}
+\index{state@{state}!game@{game}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classgame_a8e9113d8c9bfe26e517f74c1f6f08411}{game\+::state}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This enum contains all the states the game can be in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em START\+\_\+\+PAGE} & Shows the menu. \\
+\hline
+{\em HIGHSCORE\+\_\+\+PAGE} & Shows the highscore. \\
+\hline
+{\em REACTION\+\_\+\+TIME\+\_\+\+PAGE} & Shows the reaction time. \\
+\hline
+{\em TIMES\+\_\+\+PLAYED\+\_\+\+PAGE} & Shows times played. \\
+\hline
+{\em GAME} & Play the game. \\
+\hline
+{\em GAME\+\_\+\+OVER} & Shows when game is over \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgame_a8cb18375f09cd968b88d4ca7a92c59ef}\label{classgame_a8cb18375f09cd968b88d4ca7a92c59ef}} 
+\index{game@{game}!game@{game}}
+\index{game@{game}!game@{game}}
+\doxysubsubsection{\texorpdfstring{game()}{game()}}
+{\footnotesize\ttfamily game\+::game (\begin{DoxyParamCaption}\item[{hwlib\+::port\+\_\+out \&}]{leds,  }\item[{hwlib\+::port\+\_\+in \&}]{switches,  }\item[{\mbox{\hyperlink{struct_menu_switches}{Menu\+Switches}}}]{menu\+\_\+switches,  }\item[{MAX7219 \&}]{display }\end{DoxyParamCaption})}
+
+
+
+Construct a new game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leds} & A port\+\_\+out reference object that contains the pins to the leds. \\
+\hline
+{\em switches} & A port\+\_\+in reference object that contains the pins to the game switches. \\
+\hline
+{\em menu\+\_\+switches} & A port\+\_\+in reference object that contains the pins to the menu switches. \\
+\hline
+{\em display} & A reference to the object of MAX7219 chip. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TI\+\_\+\+SOFTWARE/ipass/application/application.\+hpp\item 
+C\+:/\+TI\+\_\+\+SOFTWARE/ipass/application/application.\+cpp\end{DoxyCompactItemize}
